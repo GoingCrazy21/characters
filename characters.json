@@ -1,0 +1,8 @@
+[
+{
+"title":"TEST API TITLE",
+"code":"<p>select *<span style="color: #32a852"> -- astrisk selects all fields from table</span> </p> 
+	<p>from cp1##.csftrsqp <span style="color: #32a852"> -- enter the table name you wish to search</span></p> 
+        <p>where seritm = 'R1VAL' <span style="color: #32a852"> -- Enter the name of the SE code you are searching for</span></p>"
+}
+]
