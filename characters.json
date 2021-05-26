@@ -1,6 +1,6 @@
 [
 {
 "title":"TEST API TITLE",
-"code":"select * from cp1AZ.csftrsqp where seritm = 'R1VAL' "
+"code":"select * from cp1AZ csftrsqp where seritm = 'R1VAL' "
 }
 ]
