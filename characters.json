@@ -1,10 +1,10 @@
 [
 {
 "title":"TEST API TITLE 1",
-"code":"<p>select *<span style=\"color: #32a852\"> -- astrisk selects all fields from table<\/span> <\/p> \r\n\t<p>from cp1nw.csftrsqp <span style=\"color: #32a852\"> -- enter the table name you wish to search<\/span><\/p> \r\n        <p>where seritm = 'R1VAL' <span style=\"color: #32a852\"> -- Enter the name of the SE code you are searching for<\/span><\/p>"
+"code":"<p>select *<span style=\"color: #32a852\"> -- astrisk selects all fields from table<\/span> <\/p> \r\n\t<p>from cp1##.csftrsqp <span style=\"color: #32a852\"> -- enter the table name you wish to search<\/span><\/p> \r\n        <p>where seritm = 'R1VAL' <span style=\"color: #32a852\"> -- Enter the name of the SE code you are searching for<\/span><\/p>"
 },
 {
 "title":"TEST SE",
-"code":"<p>select *<span style=\"color: #32a852\"> -- astrisk selects all fields from table<\/span> <\/p> \r\n\t<p>from cp1az.csftrsqp <span style=\"color: #32a852\"> -- enter the table name you wish to search<\/span><\/p> \r\n        <p>where seritm = 'TSTSE' <span style=\"color: #32a852\"> -- Enter the name of the SE code you are searching for<\/span><\/p>"
+"code":"<p>select *<span style=\"color: #32a852\"> -- astrisk selects all fields from table<\/span> <\/p> \r\n\t<p>from cp1##.csftrsqp <span style=\"color: #32a852\"> -- enter the table name you wish to search<\/span><\/p> \r\n        <p>where seritm = 'TSTSE' <span style=\"color: #32a852\"> -- Enter the name of the SE code you are searching for<\/span><\/p>"
 }
 ]
