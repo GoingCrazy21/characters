@@ -5,6 +5,6 @@
 },
 {
 "title":"Promo SQL 2",
-"code":"<p>select *<span style=\"color: #32a852\"> -- astrisk selects all fields from table<\/span> <\/p> \r\n\t<p>from cp1##.csftrsqp <span style=\"color: #32a852\"> -- enter the table name you wish to search<\/span><\/p> \r\n        <p>where seritm = 'TSTSE' <span style=\"color: #32a852\"> -- Enter the name of the SE code you are searching for<\/span><\/p>"
+"code":"select *<span style=\"color: #32a852\"> -- astrisk selects all fields from table<\/span> <br>from cp1##.csftrsqp <span style=\"color: #32a852\"> -- enter the table name you wish to search<\/span><br>where seritm = 'TSTSE' <span style=\"color: #32a852\"> -- Enter the name of the SE code you are searching for<\/span>"
 }
 ]
