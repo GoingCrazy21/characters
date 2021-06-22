@@ -18,5 +18,15 @@
 "title":"Customers with 3 S&Es in a specific tariff/env",
 "code":"SELECT S1.SERPEX||RIGHT('000'||(S1.SERPLN),4) as BTN,<br>EXTRF as Tariff,<br>CONCYC as BillCycle<span style=\"color: #32a852\"> --List fields that will be on output<\/span> <br>FROM CP1FT.SEREQP S1<span style=\"color: #32a852\"> --Table you are looking in<\/span><br>Left Join CP1FT.Control<span style=\"color: #32a852\"> --Joining a table<\/span><br>ON CONMEX = SERPEX<span style=\"color: #32a852\"> -- on certain matching criteria<\/span><br>LEFT JOIN CP1FT.SYDBEX<br>ON EXEXC = SERPEX<br>WHERE S1.SERITM = 'CP001'<span style=\"color: #32a852\">--Enter SE code and other criteria below<\/span><br>AND S1.SEROTD = '0'<br>AND RIGHT('000'||(S1.SERPLN),4)||S1.SERPEX<br>IN(<span style=\"color: #32a852\"> -- Sub query to get second SE<\/span><br>SELECT RIGHT('000'||(S2.SERPLN),4)||S2.SERPEX<br>FROM CP1LF.SEREQP S2<br>WHERE RIGHT('000'||(S1.SERPLN),4)||S1.SERPEX = RIGHT('000'||(S2.SERPLN),4)||S2.SERPEX<br>AND S2.SERITM = 'SFINS'<span style=\"color: #32a852\"> --Enter second SE code<\/span><br>AND S2.SEROTD = '0'<br>AND RIGHT('000'||(S1.SERPLN),4)||S1.SERPEX<br>IN(<span style=\"color: #32a852\"> -- Sub query for third SE<\/span><br>SELECT RIGHT('000'||(S3.SERPLN),4)||S3.SERPEX<br>FROM CPAFT.SEREQP S3<br>WHERE RIGHT('000'||(S1.SERPLN),4)||S1.SERPEX = RIGHT('000'||(S3.SERPLN),4)||S3.SERPEX<br>AND S3.SERITM = 'FICES'<span style=\"color: #32a852\"> -- Enter third SE<\/span><br>AND S3.SEROTD = '0'))<br>AND CONMLN = SERPLN<br>AND SERRES = CONMRS<br>AND CONMRS = '0'<br>AND EXTRF = 'NMN'<br>Group by S1.SERPEX||RIGHT('000'||(S1.SERPLN),4), EXTRF, CONCYC",
 "category":"SE"
-}  
+},
+{
+"title":"All packages that contain a specific S&E component",
+"code":"SELECT *<span style=\"color: #32a852\">--Select everything<\/span><br>FROM CP1CW.BLPKGD<span style=\"color: #32a852\">--Table we will query<\/span><br>WHERE SEDITM IN ('MBBUC')",
+"category":"SE"
+},
+{
+"title":"Find out all the S&Es that are on an service order",
+"code":"SELECT *<span style=\"color: #32a852\">--Select everything<\/span><br>FROM CP1MS.SV07<span style=\"color: #32a852\">--Table we will query<\/span><br>WHERE SV7SO# = 'XXX'<span style=\"color: #32a852\"> --Enter the service order number",
+"category":"SE"
+}
 ]
