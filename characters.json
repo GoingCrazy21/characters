@@ -13,7 +13,7 @@
 "title":"Header Query",
 "code":"SELECT TABLE_SCHEMA AS LIBRARY, TABLE_NAME AS TABLE, COLUMN_NAME AS FIELD, COLUMN_TEXT AS DESCRIPTION, DATA_TYPE, LENGTH <span style=\"color: #32a852\"> --List fields that will be on output<\/span><br>FROM QSYS2.SYSCOLUMNS <span style=\"color: #32a852\">--Table you are looking in<\/span><br>WHERE TABLE_SCHEMA LIKE 'CP1NW'<span style=\"color: #32a852\"> -- Environment Name (Database)<\/span><br>AND TABLE_NAME = 'BLSEIT'<span style=\"color: #32a852\">-- File Name (Table)<\/span><br>ORDER BY LIBRARY, ORDINAL_POSITION;",
 "category":"Customers"
-  
+}
   
 
 ]
