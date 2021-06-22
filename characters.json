@@ -11,9 +11,12 @@
 },
 {
 "title":"Header Query",
-"code":"SELECT TABLE_SCHEMA AS LIBRARY, TABLE_NAME AS TABLE, COLUMN_NAME AS FIELD, COLUMN_TEXT AS DESCRIPTION, DATA_TYPE, LENGTH <span style=\"color: #32a852\"> --List fields that will be on output<\/span><br>FROM QSYS2.SYSCOLUMNS <span style=\"color: #32a852\">--Table you are looking in<\/span><br>WHERE TABLE_SCHEMA LIKE 'CP1NW'<span style=\"color: #32a852\"> -- Environment Name (Database)<\/span><br>AND TABLE_NAME = 'BLSEIT'<span style=\"color: #32a852\">-- File Name (Table)<\/span><br>ORDER BY LIBRARY, ORDINAL_POSITION;",
-"category":"Customers"
+"code":"SELECT TABLE_SCHEMA AS LIBRARY,<br>TABLE_NAME AS TABLE,<br>COLUMN_NAME AS FIELD,<br>COLUMN_TEXT AS DESCRIPTION,<br>DATA_TYPE,<br>LENGTH <span style=\"color: #32a852\"> --List fields that will be on output<\/span><br>FROM QSYS2.SYSCOLUMNS <span style=\"color: #32a852\">--Table you are looking in<\/span><br>WHERE TABLE_SCHEMA LIKE 'CP1NW'<span style=\"color: #32a852\"> -- Environment Name (Database)<\/span><br>AND TABLE_NAME = 'BLSEIT'<span style=\"color: #32a852\">-- File Name (Table)<\/span><br>ORDER BY LIBRARY, ORDINAL_POSITION;",
+"category":"Products"
+},
+{
+"title":"Customers with S&E in a specific tariff/env",
+"code":"SELECT S1.SERPEX||RIGHT('000'||(S1.SERPLN),4) as BTN,<br>EXTRF as Tariff,<br>CONCYC as BillCycle<span style=\"color: #32a852\"> --List fields that will be on output<\/span> <br>FROM CP1FT.SEREQP S1<span style=\"color: #32a852\"> --Table you are looking in<\/span><br>Left Join CP1FT.Control<span style=\"color: #32a852\"> --Joining a table<\/span><br>ON CONMEX = SERPEX<br>LEFT JOIN CP1FT.SYDBEX<br>ON EXEXC = SERPEX<br>WHERE S1.SERITM = 'CP001'<span style=\"color: #32a852\">--Enter SE code<\/span><br>AND S1.SEROTD = '0'<br>AND CONMLN = SERPLN<br>AND SERRES = CONMRS<br>AND CONMRS = '0'<br>AND EXTRF = 'CCO'",
+"category":"SE"
 }
-  
-
 ]
