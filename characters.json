@@ -1,22 +1,17 @@
 [
 {
-"title":"Customers SQL 1",
-"code":"select *<span style=\"color: #32a852\"> -- astrisk selects all fields from table<\/span> <br>from cp1##.csftrsqp <span style=\"color: #32a852\"> -- enter the table name you wish to search<\/span><br>where seritm = 'R1VAL' <span style=\"color: #32a852\"> -- Enter the name of the SE code you are searching for<\/span>",
-"category":"Customers"
-},
-{
-"title":"Promo SQL 2",
-"code":"select *<span style=\"color: #32a852\"> -- astrisk selects all fields from table<\/span> <br>from cp1##.csftrsqp <span style=\"color: #32a852\"> -- enter the table name you wish to search<\/span><br>where seritm = 'TSTSE' <span style=\"color: #32a852\"> -- Enter the name of the SE code you are searching for<\/span>",
-"category":"Promos"
-},
-{
 "title":"Header Query",
 "code":"SELECT TABLE_SCHEMA AS LIBRARY,<br>TABLE_NAME AS TABLE,<br>COLUMN_NAME AS FIELD,<br>COLUMN_TEXT AS DESCRIPTION,<br>DATA_TYPE,<br>LENGTH <span style=\"color: #32a852\"> --List fields that will be on output<\/span><br>FROM QSYS2.SYSCOLUMNS <span style=\"color: #32a852\">--Table you are looking in<\/span><br>WHERE TABLE_SCHEMA LIKE 'CP1NW'<span style=\"color: #32a852\"> -- Environment Name (Database)<\/span><br>AND TABLE_NAME = 'BLSEIT'<span style=\"color: #32a852\">-- File Name (Table)<\/span><br>ORDER BY LIBRARY, ORDINAL_POSITION;",
 "category":"Products"
 },
 {
 "title":"Customers with S&E in a specific tariff/env",
-"code":"SELECT S1.SERPEX||RIGHT('000'||(S1.SERPLN),4) as BTN,<br>EXTRF as Tariff,<br>CONCYC as BillCycle<span style=\"color: #32a852\"> --List fields that will be on output<\/span> <br>FROM CP1FT.SEREQP S1<span style=\"color: #32a852\"> --Table you are looking in<\/span><br>Left Join CP1FT.Control<span style=\"color: #32a852\"> --Joining a table<\/span><br>ON CONMEX = SERPEX<br>LEFT JOIN CP1FT.SYDBEX<br>ON EXEXC = SERPEX<br>WHERE S1.SERITM = 'CP001'<span style=\"color: #32a852\">--Enter SE code<\/span><br>AND S1.SEROTD = '0'<br>AND CONMLN = SERPLN<br>AND SERRES = CONMRS<br>AND CONMRS = '0'<br>AND EXTRF = 'CCO'",
+"code":"SELECT S1.SERPEX||RIGHT('000'||(S1.SERPLN),4) as BTN,<br>EXTRF as Tariff,<br>CONCYC as BillCycle<span style=\"color: #32a852\"> --List fields that will be on output<\/span> <br>FROM CP1FT.SEREQP S1<span style=\"color: #32a852\"> --Table you are looking in<\/span><br>Left Join CP1FT.Control<span style=\"color: #32a852\"> --Joining a table<\/span><br>ON CONMEX = SERPEX<span style=\"color: #32a852\"> -- on certain matching criteria<\/span><br>LEFT JOIN CP1FT.SYDBEX<br>ON EXEXC = SERPEX<br>WHERE S1.SERITM = 'CP001'<span style=\"color: #32a852\">--Enter SE code and other criteria below<\/span><br>AND S1.SEROTD = '0'<br>AND CONMLN = SERPLN<br>AND SERRES = CONMRS<br>AND CONMRS = '0'<br>AND EXTRF = 'CCO'",
 "category":"SE"
 }
+{
+"title":"Customers with 2 S&Es in a specific tariff/env",
+"code":"SELECT S1.SERPEX||RIGHT('000'||(S1.SERPLN),4) as BTN,<br>EXTRF as Tariff,<br>CONCYC as BillCycle<span style=\"color: #32a852\"> --List fields that will be on output<\/span> <br>FROM CP1FT.SEREQP S1<span style=\"color: #32a852\"> --Table you are looking in<\/span><br>Left Join CP1FT.Control<span style=\"color: #32a852\"> --Joining a table<\/span><br>ON CONMEX = SERPEX<span style=\"color: #32a852\"> -- on certain matching criteria<\/span><br>LEFT JOIN CP1FT.SYDBEX<br>ON EXEXC = SERPEX<br>WHERE S1.SERITM = 'CP001'<span style=\"color: #32a852\">--Enter SE code and other criteria below<\/span><br>AND S1.SEROTD = '0'<br>AND RIGHT('000'||(S1.SERPLN),4)||S1.SERPEX<br>IN(<br>SELECT RIGHT('000'||(S2.SERPLN),4)||S2.SERPEX<br>FROM CP1LF.SEREQP S2<br>WHERE RIGHT('000'||(S1.SERPLN),4)||S1.SERPEX = RIGHT('000'||(S2.SERPLN),4)||S2.SERPEX<br>AND S2.SERITM = 'SFINS'<br>AND S2.SEROTD = '0')<br>AND CONMLN = SERPLN<br>AND SERRES = CONMRS<br>AND CONMRS = '0'<br>AND EXTRF = 'CCO'",
+"category":"SE"
+}  
 ]
